@@ -28,7 +28,6 @@ public class Ball_Controller : MonoBehaviour
 
     public void ResetBall()
     {
-            Debug.Log("Reset");
             // Congrats you lose restarting the ball position
             transform.position = InitialPosition;
             
