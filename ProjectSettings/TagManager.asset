@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bola
   - RestartWall
+  - Trap
   layers:
   - Default
   - TransparentFX

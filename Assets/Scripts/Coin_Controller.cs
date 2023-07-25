@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Coin_Controller : MonoBehaviour
 {
-    public Collider Bola;
-    public GameObject Coin;
     private SpawnCoin Spawner;
 
     // Start is called before the first frame update

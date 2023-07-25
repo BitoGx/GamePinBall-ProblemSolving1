@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnCoin : MonoBehaviour
+public class SpawnTrap : MonoBehaviour
 {
     public GameObject Spawner;
     public float SpawnTime = 3f; // Interval 3 detik sesuai kebutuhan
@@ -20,10 +20,10 @@ public class SpawnCoin : MonoBehaviour
     private IEnumerator StartSpawnAfterDelay()
     {
         yield return new WaitForSeconds(SpawnTime);
-        StartCoroutine(SpawnCoins());
+        StartCoroutine(SpawnTraps());
     }
 
-    private IEnumerator SpawnCoins()
+    private IEnumerator SpawnTraps()
     {
         while (canSpawn)
         {
@@ -31,25 +31,25 @@ public class SpawnCoin : MonoBehaviour
             {
                 float YPos = 0.23f;
                 Vector3 RandomSpawnPosition = new Vector3(Random.Range(-3f, 3f), YPos, Random.Range(-1f, 1f));
-                GameObject newCoin = Instantiate(Spawner, RandomSpawnPosition, Quaternion.Euler(90f, 0f, 0f));
+                GameObject newTraps = Instantiate(Spawner, RandomSpawnPosition, Quaternion.Euler(90f, 0f, 0f));
                 Spawned++;
 
-                StartCoroutine(DespawnCoin(newCoin));
+                StartCoroutine(DespawnTrap(newTraps));
             }
 
             yield return new WaitForSeconds(SpawnTime);
         }
     }
 
-    private IEnumerator DespawnCoin(GameObject coinToDespawn)
+    private IEnumerator DespawnTrap(GameObject trapToDespawn)
     {
         yield return new WaitForSeconds(10f); // Wait for 10 seconds
-        Destroy(coinToDespawn);
+        Destroy(trapToDespawn);
         Spawned--;
     }
 
     // Fungsi despawn untuk dipanggil dari luar hitung hitung lindungin variable spawned
-    public void CoinDespawned()
+    public void TrapDespawned()
     {
         Spawned--;
     }

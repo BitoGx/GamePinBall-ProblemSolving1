@@ -26,16 +26,22 @@ public class Ball_Controller : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void ResetBall()
     {
-        // Kalau nabrak tembok bawah (Restart Wall bakal restart)
-        if (collision.gameObject.CompareTag("RestartWall"))
-        {
+            Debug.Log("Reset");
             // Congrats you lose restarting the ball position
             transform.position = InitialPosition;
             
             // Jaga jaga reset kecepatan bola jadi 0 (biar gak gerak pas respawn)
             rig.velocity = Vector3.zero;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Kalau nabrak tembok bawah (Restart Wall bakal restart)
+        if (collision.gameObject.CompareTag("RestartWall"))
+        {
+            ResetBall();
         }
     }
 }
